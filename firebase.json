@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "moneytrack",
+      "public": "dist/moneytrack",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

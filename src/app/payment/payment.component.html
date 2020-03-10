@@ -1,0 +1,72 @@
+<mdb-card>
+    <mdb-card-header>Paiement List</mdb-card-header>
+    <mdb-card-body>
+        <button type="button" class="btn btn-success" (click)="open(content)">Ajouter</button>
+<div class="container">
+    <div class="row">
+      <div class="col-md-12 mx-auto">
+        <div class="md-form">
+          <input
+            type="text"
+            [(ngModel)]="searchText"
+            class="form-control"
+            id="search"
+            mdbInput
+          />
+          <label for="search">Filtrer</label>
+        </div>
+      </div>
+    </div>
+    <table mdbTable class="z-depth-1">
+      <thead>
+        <tr scope="row">
+         
+          <td >Date</td>
+          <td>Article</td>
+          <td>Etat</td>
+          <td>Action</td>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let el of elements; let i = index">
+          <th scope="row">{{el.payment_date | date:'EEEE, d,MMMM, y'}}</th>
+          <td >{{el.article_id}}</td>
+          <td>{{el.state}}</td>
+    
+          <td><button type="button" class="btn btn-danger" *ngIf="el.state==='paid'" (click)="unpaid(el)">Annuler</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </mdb-card-body>
+</mdb-card>
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Faire un achat
+
+      </h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body" >
+      <form  [formGroup]="myGroup">
+        <div class="form-group">
+          <label for="dateOfBirth">Article</label>
+          <div class="input-group">
+            
+            <select name="article" formControlName="mySelect" >
+                <option  *ngFor="let opt of articles" [value]="opt.id" selected>{{opt.label}}</option>
+              </select>
+          </div>
+          <button class="btn btn-success" (onclick)="onSubmit()" >Acheter</button>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+        
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">annuler</button>
+    
+    </div>
+  </ng-template>

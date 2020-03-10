@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "propremium-839d1": {
+      "hosting": {
+        "moneytrack": [
+          "propremium-839d1"
+        ]
+      }
+    }
+  }
+}
